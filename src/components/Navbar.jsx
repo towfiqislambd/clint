@@ -23,7 +23,7 @@ const Navbar = () => {
                             <li><NavLink to='/my-donations'>My Donations</NavLink></li>
                         </ul>
                     </div>
-                    <Link to="/"><img src={logo} className="w-14" /> </Link>
+                    <Link to="/"><img src={logo} className="md:w-14 w-12" /> </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 font-medium text-gray-700">

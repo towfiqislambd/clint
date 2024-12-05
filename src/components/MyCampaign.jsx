@@ -48,42 +48,44 @@ const MyCampaign = () => {
     }
 
     return (
-        <div className="overflow-x-auto container mx-auto px-40 my-10">
-            {
-                campaigns.length === 0 ?
-                    <h2 className="text-center text-3xl text-error font-semibold">You did not add any campaign!!</h2> :
-                    <table className="table border-[2px] border-gray-400 table-lg">
-                        <thead className="bg-gray-700 text-gray-200 text-[0.9rem]">
-                            <tr>
-                                <th>ID</th>
-                                <th>Username</th>
-                                <th>User Email</th>
-                                <th>Campaign Title</th>
-                                <th>Campaign Type</th>
-                                <th>Date</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                campaigns.map((campaign, idx) => <tr className="border border-gray-300" key={campaign._id}>
-                                    <th>{idx + 1}</th>
-                                    <td>{campaign.name}</td>
-                                    <td>{campaign.email}</td>
-                                    <td>{campaign.title}</td>
-                                    <td>{campaign.campaign_type}</td>
-                                    <td>{campaign.date}</td>
-                                    <td>
-                                        <button><Link to={`/update-campaign/${campaign._id}`}><MdEdit className="text-2xl me-4" /></Link></button>
-                                        <button onClick={() => handleDelete(campaign._id)}>
-                                            <RxCross2 className="text-2xl" />
-                                        </button>
-                                    </td>
-                                </tr>)
-                            }
-                        </tbody>
-                    </table>
-            }
+        <div className="container mx-auto px-5 xl:px-32 my-10">
+            <div className="overflow-x-auto border-[2px] border-gray-400">
+                {
+                    campaigns.length === 0 ?
+                        <h2 className="text-center text-3xl text-error font-semibold">You did not add any campaign!!</h2> :
+                        <table className="table xl:table-lg">
+                            <thead className="bg-gray-700 text-gray-200 text-[0.9rem]">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Username</th>
+                                    <th className="hidden sm:table-cell">User Email</th>
+                                    <th className="hidden lg:table-cell">Campaign Title</th>
+                                    <th>Campaign Type</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    campaigns.map((campaign, idx) => <tr className="border border-gray-300" key={campaign._id}>
+                                        <th>{idx + 1}</th>
+                                        <td>{campaign.name}</td>
+                                        <td className="hidden sm:table-cell">{campaign.email}</td>
+                                        <td className="hidden lg:table-cell">{campaign.title}</td>
+                                        <td>{campaign.campaign_type}</td>
+                                        <td>{campaign.date}</td>
+                                        <td>
+                                            <button><Link to={`/update-campaign/${campaign._id}`}><MdEdit className="text-xl sm:text-2xl sm:me-4" /></Link></button>
+                                            <button onClick={() => handleDelete(campaign._id)}>
+                                                <RxCross2 className="text-xl sm:text-2xl" />
+                                            </button>
+                                        </td>
+                                    </tr>)
+                                }
+                            </tbody>
+                        </table>
+                }
+            </div>
         </div>
     )
 }
