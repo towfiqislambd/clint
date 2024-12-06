@@ -1,11 +1,17 @@
 import { FaBars } from "react-icons/fa6";
 import logo from "../assets/business.png"
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
+import ThemeController from "../ThemeController";
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
+
+
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext)
+    const location = useLocation();
 
     return (
         <nav className="border-b sticky top-0 z-10 bg-white py-1 shadow">
@@ -37,17 +43,23 @@ const Navbar = () => {
                 <div className="navbar-end">
                     {
                         user ?
-                            <div className="flex gap-3">
-                                <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
-                                <img  src={user?.photoURL} className="w-10 h-10 rounded-full" />
-                                </div>
-                               
-                                <Link onClick={signOutUser} className="bg-purple-600 text-white px-4 py-2 rounded font-medium">Log Out</Link>
+                            <div className="flex gap-3 items-center">
+                                <Tooltip anchorSelect=".my-anchor-element" place="top">
+                                    {user?.displayName}
+                                </Tooltip>
+                                <img src={user?.photoURL} className="w-10 my-anchor-element h-10 rounded-full" />
+                                <Link onClick={signOutUser} className="bg-purple-600 text-white px-2 sm:px-4 sm:py-2 py-[6px] rounded font-medium">Log Out</Link>
+                                {
+                                    location.pathname === '/' && <ThemeController />
+                                }
                             </div>
                             :
-                            <div className="flex gap-3">
-                                <Link to='/login' className="bg-purple-600 text-white px-4 py-2 rounded font-medium">Login</Link>
-                                <Link to='/signup' className="bg-purple-600 text-white px-4 py-2 rounded font-medium">Register</Link>
+                            <div className="flex gap-3 items-center">
+                                <Link to='/login' className="bg-purple-600 text-white px-3 sm:px-4 sm:py-2 py-[6px] rounded font-medium">Login</Link>
+                                <Link to='/signup' className="bg-purple-600 text-white px-3 sm:px-4 sm:py-2 py-[6px] rounded font-medium">Register</Link>
+                                {
+                                    location.pathname === '/' && <ThemeController />
+                                }
                             </div>
                     }
 

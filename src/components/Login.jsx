@@ -60,7 +60,7 @@ const Login = () => {
                     </div>
                     <p className="text-gray-700 text-center pt-3 pb-4">Dont have any account? <Link to="/signup" className="link link-hover text-purple-600 font-semibold">Register</Link></p>
                     <div className="divider divide-slate-700 -mt-2 text-gray-700 font-medium">or</div>
-                    <Link onClick={handleGoogleSignIn} className="items-center text-center gap-1 sm:gap-2 flex -mt-2 border border-purple-300 rounded-full py-[8px] mx-auto font-medium  bg-purple-200 justify-center w-3/5"><FcGoogle className="text-2xl" /> Signin With Google</Link>
+                    <Link onClick={handleGoogleSignIn} className="items-center text-center gap-1 sm:gap-2 flex -mt-2 border border-purple-300 text-sm sm:text-[16px] rounded-full py-[8px] mx-auto font-medium  bg-purple-200 justify-center w-3/5"><FcGoogle className="text-xl sm:text-2xl" /> Signin With Google</Link>
                 </form>
                 {
                     errorMessage && <h3 className="text-center px-7 pb-4 text-error -mt-4">{errorMessage}</h3>

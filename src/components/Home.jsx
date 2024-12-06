@@ -7,7 +7,7 @@ import Slider from "./Slider";
 const Home = () => {
     const campaigns = useLoaderData();
     return (
-        <div>
+        <div className="bg-white text-black dark:bg-gray-950 dark:text-white">
             <Slider></Slider>
             <About></About>
             <RunningCampaign campaigns={campaigns}></RunningCampaign>

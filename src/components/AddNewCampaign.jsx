@@ -55,7 +55,11 @@ const AddNewCampaign = () => {
                             <option value='business'>Business</option>
                             <option value='creative-ideas'>Creative Ideas</option>
                         </select>
-                        <input onChange={(e) => setDates(e.target.value)} type="date" className="input col-span-2 sm:col-span-1 w-full input-bordered border-purple-200 rounded text-gray-400" required />
+                        {/* <input onChange={(e) => setDates(e.target.value)} type="date" className="input col-span-2 sm:col-span-1 w-full input-bordered border-purple-200 rounded text-gray-400" required /> */}
+
+                        <input type="text" onChange={(e) => setDates(e.target.value)} onFocus={e => e.target.type = 'date'} onBlur={e => e.target.type = 'text'} placeholder='mm/dd/yyyy (Deadline)' className="input col-span-2 sm:col-span-1 w-full input-bordered border-purple-200 rounded text-gray-400" required />
+
+
                         <input disabled value={user?.displayName} type="text" name="name" placeholder="User Name" className="input w-full input-bordered col-span-2 sm:col-span-1 border-purple-200 rounded" required />
                         <input disabled value={user?.email} type="email" name="email" placeholder="User Email" className="input w-full input-bordered col-span-2 sm:col-span-1 border-purple-200 rounded" required />
                         <input type="number" name="number" placeholder="Donation amount" className="input w-full input-bordered border-purple-200 rounded col-span-2" required />
